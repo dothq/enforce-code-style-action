@@ -39,7 +39,6 @@ async function run() {
         await execute("git", ["config", "user.email", gitEmail])
 
         await execute("git", ["add", "."])
-        await execute("git", ["add", "."])
         await execute("git", ["commit", "-m", commitMsg])
         await execute("git", ["push", "origin", branch])
     } catch(e) {

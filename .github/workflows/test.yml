@@ -20,3 +20,4 @@ jobs:
           commitMsg: "🎨 Enforce code style [test]"
           gitName: dothq-robot
           gitEmail: dothq-robot@users.noreply.github.com
+          prettierArgs: "--loglevel debug --write ."
