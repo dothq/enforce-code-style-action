@@ -18,4 +18,5 @@ jobs:
         if: always()
         with:
           commitMsg: "🎨 Enforce code style [test]"
-          token: ${{ secrets.ROBOT_TOKEN }}
+          gitName: dothq-robot
+          gitEmail: dothq-robot@users.noreply.github.com
