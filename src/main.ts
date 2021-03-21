@@ -33,8 +33,8 @@ async function run() {
 
         const { stdout: branch } = await execa("git", ["rev-parse", "--abbrev-ref", "HEAD"])
 
-        await execute("git", ["config", "user.name", gitName])
-        await execute("git", ["config", "user.email", gitEmail])
+        await execute("git", ["config", "user.name", `"${gitName}"`])
+        await execute("git", ["config", "user.email", `"${gitEmail}"`])
 
         await execute("git", ["add", "."])
         await execute("git", ["commit", "-m", commitMsg])
