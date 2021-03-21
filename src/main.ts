@@ -59,7 +59,7 @@ async function run() {
         await execute("git", ["commit", "-m", `"${commitMsg}"`])
         await execute("git", ["push", "origin", branch])
     } catch(e) {
-        core.setFailed(`Unexpected failure: ${e} (${e.message})`)
+        throw e;
     }
 }
 
