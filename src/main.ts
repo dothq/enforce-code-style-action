@@ -1,6 +1,4 @@
-import * as github from '@actions/github'
-
-import core from '@actions/core'
+import * as core from '@actions/core'
 
 import execa from 'execa'
 import fs from 'fs'
@@ -59,7 +57,7 @@ async function run() {
         await execute("git", ["commit", "-m", `"${commitMsg}"`])
         await execute("git", ["push", "origin", branch])
     } catch(e) {
-        throw e;
+        core.setFailed(e)
     }
 }
 
