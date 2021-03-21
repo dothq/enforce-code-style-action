@@ -25,13 +25,13 @@ const setupGit = (name, email, token) => {
 [user]
     name = ${name}
     email = ${email}
-`, (e) => { throw e });
+`, (e) => { core.setFailed(`${e?.message}`) });
 
     fs.writeFile(path.resolve(os.homedir(), '.netrc'), `
 machine github.com
 login ${process.env.GITHUB_REPOSITORY?.replace(/\/.+/, '')}
 password ${token}
-    `, (e) => { throw e });
+    `, (e) => { core.setFailed(`${e?.message}`) });
 }
 
 async function run() {
@@ -57,7 +57,7 @@ async function run() {
         await execute("git", ["commit", "-m", `"${commitMsg}"`])
         await execute("git", ["push", "origin", branch])
     } catch(e) {
-        core.setFailed(e)
+        core.setFailed(`${e.message}`)
     }
 }
 
