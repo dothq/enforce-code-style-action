@@ -1,9 +1,6 @@
 import * as core from '@actions/core'
 
 import execa from 'execa'
-import fs from 'fs'
-import path from 'path'
-import os from 'os'
 
 const execute = async (cmd: string, args: any[]) => {
     return new Promise((resolve, reject) => {
@@ -13,7 +10,7 @@ const execute = async (cmd: string, args: any[]) => {
         proc.stdout?.pipe(process.stdout);
 
         proc.on("exit", (c) => {
-            resolve(c)
+            resolve(true)
         })
     })
 }
