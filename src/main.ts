@@ -20,24 +20,9 @@ const execute = async (cmd: string, args: any[]) => {
     })
 }
 
-const setupGit = (name, email, token) => {
-    fs.appendFile('.git/config', `
-[user]
-    name = ${name}
-    email = ${email}
-`, (e) => { if(e) console.log(e) });
-
-    fs.writeFile(path.resolve(os.homedir(), '.netrc'), `
-machine github.com
-login ${process.env.GITHUB_REPOSITORY?.replace(/\/.+/, '')}
-password ${token}
-    `, (e) => { if(e) console.log(e) });
-}
-
 async function run() {
     try {        
         const prettierArgs = core.getInput('prettierArgs') || '.';
-        const token = core.getInput('token') || '';
         const gitEmail = core.getInput('gitEmail') || '';
         const gitName = core.getInput('gitName') || '';
         const commitMsg = core.getInput('commitMsg') || '';
@@ -50,7 +35,8 @@ async function run() {
 
         const { stdout: branch } = await execa("git", ["rev-parse", "--abbrev-ref", "HEAD"])
 
-        setupGit(gitName, gitEmail, token);
+        await execute("git", ["config", "user.name", gitName])
+        await execute("git", ["config", "user.email", gitEmail])
 
         await execute("git", ["add", "."])
         await execute("git", ["add", "."])

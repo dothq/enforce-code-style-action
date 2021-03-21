@@ -7,18 +7,14 @@ inputs:
     description: "Commit message for the code style commit."
     required: true
     default: ''
-  token:
-    description: "GitHub Token to use for committing."
-    required: false
-    default: ''
   gitEmail:
     description: "Git Email to use for committing."
     required: false
-    default: 'actions@users.noreply.github.com'
+    default: ${{ github.actor }}@users.noreply.github.com
   gitName:
     description: "Git Name to use for committing."
     required: false
-    default: 'github-actions'
+    default: ${{ github.actor }}
   prettierArgs:
     description: "Custom arguments for Prettier."
     required: false
