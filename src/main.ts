@@ -13,9 +13,7 @@ const execute = async (cmd: string, args: any[]) => {
         proc.stdout?.pipe(process.stdout);
 
         proc.on("exit", (c) => {
-            if(c == 0) {
-                resolve(true);
-            } else reject(c);
+            resolve(c)
         })
     })
 }
