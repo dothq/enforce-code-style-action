@@ -10,7 +10,7 @@ const execute = async (cmd: string, args: any[]) => {
         proc.stdout?.pipe(process.stdout);
 
         proc.on("exit", (c) => {
-            resolve(true)
+            resolve(proc.stdout)
         })
     })
 }
@@ -35,7 +35,9 @@ async function run() {
 
         await execute("git", ["add", "."])
         await execute("git", ["commit", "-m", commitMsg])
-        await execute("git", ["push", "origin", branch])
+        await execute("git", ["push", "origin", branch]).then(_ => {
+            console.log(_)
+        })
     } catch(e) {
         if(e) console.log(e)
     }
