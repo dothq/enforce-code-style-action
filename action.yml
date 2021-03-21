@@ -18,7 +18,7 @@ inputs:
   gitName:
     description: "Git Name to use for committing."
     required: false
-    default: 'GitHub Actions'
+    default: 'github-actions'
   prettierArgs:
     description: "Custom arguments for Prettier."
     required: false
