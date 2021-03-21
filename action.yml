@@ -1,0 +1,33 @@
+name: 'Enforce Code Style Action'
+description: ' 🎨 Enforce your Prettier code style on your project in a simple, easy-to-use GitHub action. '
+author: 'Dot HQ'
+
+inputs:
+  commitMsg:
+    description: "Commit message for the code style commit."
+    required: true
+    default: ''
+  token:
+    description: "GitHub Token to use for committing."
+    required: false
+    default: ${{ secrets.GITHUB_TOKEN }}
+  gitEmail:
+    description: "Git Email to use for committing."
+    required: false
+    default: 'actions@users.noreply.github.com'
+  gitName:
+    description: "Git Name to use for committing."
+    required: false
+    default: 'GitHub Actions'
+  prettierArgs:
+    description: "Custom arguments for Prettier."
+    required: false
+    default: '.'
+
+runs:
+  using: 'node12'
+  main: 'lib/main.js'
+
+branding:
+  color: 'white'
+  icon: 'zap'

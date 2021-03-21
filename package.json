@@ -1,0 +1,22 @@
+{
+  "name": "enforce-code-style-action",
+  "version": "0.0.0",
+  "description": "Enforce code style GitHub Action",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "npx tsc",
+    "release": "npm install && npm run build && npm prune --production",
+    "version": "npm run release"
+  },
+  "author": "Dot HQ",
+  "license": "MPL-2.0",
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "@types/node": "^14.14.20",
+    "execa": "^5.0.0"
+  }
+}

@@ -1,0 +1,21 @@
+name: Test
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: build
+        run: yarn run build
+
+      - name: run
+        uses: ./
+        if: always()
+        with:
+          commitMsg: "🎨 Enforce code style [test]"
+          token: ${{ secrets.ROBOT_TOKEN }}
